@@ -5,12 +5,15 @@
   "scripts": {
     "start": "node ./bin/www",
     "test": "jest",
+    "createdb": "sequelize db:create",
+    "drop": "sequelize db:drop",
     "migrate": "sequelize db:migrate"
   },
   "dependencies": {
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "morgan": "^1.9.1",
+    "pg": "^7.4.3",
     "sequelize": "^4.38.1"
   },
   "devDependencies": {
