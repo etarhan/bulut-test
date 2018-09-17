@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Command.associate = function(models) {
     // associations can be defined here
+    Command.belongsTo(models.Review, { foreignKey: 'command_id', as: 'command' });
   };
   return Command;
 };
