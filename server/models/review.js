@@ -1,4 +1,3 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Review = sequelize.define('Review', {
     command_id: DataTypes.INTEGER,
@@ -9,11 +8,12 @@ module.exports = (sequelize, DataTypes) => {
     rating: DataTypes.INTEGER,
     status: DataTypes.STRING
   }, {
+    tableName: 'review',
     underscored: true,
   });
   Review.associate = function(models) {
     // associations can be defined here
-    Review.hasOne(models.Command, { foreignKey: 'command_id', as: 'command' });
+    Review.belongsTo(models.Command, { foreignKey: 'command_id', as: 'command' });
   };
   return Review;
 };

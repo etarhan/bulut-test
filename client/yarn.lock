@@ -5869,6 +5869,13 @@ ra-data-json-server@^2.3.1:
     query-string "~5.1.1"
     react-admin "^2.3.1"
 
+ra-data-simple-rest@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/ra-data-simple-rest/-/ra-data-simple-rest-2.3.1.tgz#c59203fcac042054d00af9b14d2e1d5b21570e79"
+  dependencies:
+    query-string "~5.1.1"
+    react-admin "^2.3.1"
+
 ra-input-rich-text@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/ra-input-rich-text/-/ra-input-rich-text-2.3.0.tgz#ea830e87bfd052ecd5f519ea975fbe66951ebc38"

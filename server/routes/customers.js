@@ -5,7 +5,7 @@ const model = require('../models/index');
 
 /* GET customers listing. */
 router.get('/', function (req, res, next) {
-
+  //filter={}&order=DESC&page=1&perPage=25&sort=last_seen
   model.Customer.findAll({
     include: [{
       model: model.Group,
@@ -16,7 +16,9 @@ router.get('/', function (req, res, next) {
       exclude: ['created_at', 'updated_at']
     }
   }).then((customers) => {
-    res.json(convertGroupsToString(customers));
+    customers.forEach((c) => c.total_spent = parseFloat(c.total_spent).toFixed(2));
+    res.header("Content-Range", "customers 0-24/900");
+    res.json(convertGroupsToString(customers.slice(0, 25)));
   })
 });
 

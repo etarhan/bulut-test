@@ -1,4 +1,3 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Customer = sequelize.define('Customer', {
     first_name: DataTypes.STRING,
@@ -15,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     has_ordered: DataTypes.BOOLEAN,
     has_newsletter: DataTypes.BOOLEAN,
     nb_commands: DataTypes.INTEGER,
-    total_spent: DataTypes.INTEGER
+    total_spent: DataTypes.DECIMAL
   }, {
     tableName: 'customer',
     underscored: true,
