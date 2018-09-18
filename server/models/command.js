@@ -1,4 +1,3 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Command = sequelize.define('Command', {
     customer_id: DataTypes.INTEGER,

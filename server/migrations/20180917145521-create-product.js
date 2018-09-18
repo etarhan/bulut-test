@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Products', {
+    return queryInterface.createTable('product', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       height: {
         type: Sequelize.DECIMAL
@@ -23,7 +23,7 @@ module.exports = {
       price: {
         type: Sequelize.DECIMAL
       },
-      rerference: {
+      reference: {
         type: Sequelize.STRING
       },
       stock: {
@@ -37,15 +37,17 @@ module.exports = {
       },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Products');
+    return queryInterface.dropTable('product');
   }
 };

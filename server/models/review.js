@@ -1,4 +1,3 @@
-'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Review = sequelize.define('Review', {
     command_id: DataTypes.INTEGER,
@@ -9,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     rating: DataTypes.INTEGER,
     status: DataTypes.STRING
   }, {
+    tableName: 'review',
     underscored: true,
   });
   Review.associate = function(models) {
