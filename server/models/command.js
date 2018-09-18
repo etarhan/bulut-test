@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   });
   Command.associate = function(models) {
     // associations can be defined here
-    Command.belongsTo(models.Review, { foreignKey: 'command_id', as: 'command' });
+    Command.hasOne(models.Review, { foreignKey: 'command_id', as: 'command' });
+    Command.hasMany(models.Basket, { foreignKey: 'command_id', as: 'basket' });
   };
   return Command;
 };

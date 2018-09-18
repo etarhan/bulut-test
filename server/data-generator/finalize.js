@@ -8,7 +8,8 @@ module.exports =  (db) => {
             customer.latest_purchase < command.date) {
             customer.latest_purchase = command.date;
         }
-        customer.total_spent += command.total;
+        console.log(command.total);
+        customer.total_spent = parseFloat(customer.total_spent) + parseFloat(command.total);
         customer.nb_commands++;
     });
 

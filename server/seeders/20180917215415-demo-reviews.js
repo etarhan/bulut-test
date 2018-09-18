@@ -1,23 +1,16 @@
 const generateReviews = require('../data-generator/reviews');
+const models = require('../models/index');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
     const db = {};
-    return queryInterface.sequelize.query(`select * from customer;`)
+    return models.Customer.findAll({ include: [{ all: true }]})
       .then((customers) => {
-        db.customers = customers[0];
-        return queryInterface.sequelize.query(
-          `select * from command`);
+        db.customers = customers.map((c) => c.get({ plain: true }));
+        return models.Command.findAll({ include: [{ all: true }]});
       })
       .then((commands) => {
-        db.commands = commands[0];
-        return queryInterface.sequelize.query(
-          `select * from basket`);
-      })
-      .then((baskets) => {
-        db.commands.forEach((command) => {
-          command.basket = baskets[0].filter((basket) => basket.command_id === command.id);
-        });
+        db.commands = commands.map((c) => c.get({ plain: true }));
         return queryInterface.bulkInsert('review', generateReviews(db, { serializeDate: true }), {});
       });
   },

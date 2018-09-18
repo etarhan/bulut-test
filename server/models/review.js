@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Review.associate = function(models) {
     // associations can be defined here
-    Review.hasOne(models.Command, { foreignKey: 'command_id', as: 'command' });
+    Review.belongsTo(models.Command, { foreignKey: 'command_id', as: 'command' });
   };
   return Review;
 };
