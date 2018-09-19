@@ -8,9 +8,11 @@ Tests will use the DB config `test` values under `server/config`. If a non defau
 To run application
 `npm run start`
 
+
 ## **Client side**
 To run application
 `npm run start`
+
 
 ## Notes
 By default the client will run on port 3000 and the API on port 4000.
