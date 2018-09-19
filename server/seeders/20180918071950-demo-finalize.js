@@ -39,7 +39,7 @@ module.exports = {
             updatedAt: model.Sequelize.literal('CURRENT_TIMESTAMP')
           }, {
             where: { id: customer.id }
-          }).spread(((affectedCount) => console.log(affectedCount)));
+          }).spread(((affectedCount) => affectedCount));
         }));
       });
   },
