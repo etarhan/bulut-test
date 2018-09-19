@@ -37,7 +37,7 @@ class Dashboard extends Component {
                             .reduce(
                                 (stats, order) => {
                                     if (order.status !== 'cancelled') {
-                                        stats.revenue += order.total;
+                                        stats.revenue += parseFloat(order.total);
                                         stats.nbNewOrders++;
                                     }
                                     if (order.status === 'ordered') {
