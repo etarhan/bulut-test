@@ -1,22 +1,22 @@
 const generateFinalized = require('../data-generator/finalize');
-const models = require('../models/index');
+const model = require('../models/index');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
     const db = {};
-    return models.Customer.findAll({ include: [{ all: true }] })
+    return model.Customer.findAll({ include: [{ all: true }] })
       .then((customers) => {
         db.customers = customers.map((c) => c.get({ plain: true }));
-        return models.Command.findAll({ include: [{ all: true }] });
+        return model.Command.findAll({ include: [{ all: true }] });
       })
       .then((commands) => {
         db.commands = commands.map((c) => c.get({ plain: true }));
-        return models.Review.findAll({});
+        return model.Review.findAll({});
       })
       .then((reviews) => {
         db.reviews = reviews.map((c) => c.get({ plain: true }));
         generateFinalized(db, { serializeDate: true });
-        return models.Group.findAll({});
+        return model.Group.findAll({});
       })
       .then((groups) => {
         const groupArray = []
@@ -32,11 +32,11 @@ module.exports = {
       })
       .then(() => {
         return Promise.all(db.customers.map((customer) => {
-          return models.Customer.update({
+          return model.Customer.update({
             latest_purchase: customer.latest_purchase,
             total_spent: customer.total_spent,
             nb_commands: customer.nb_commands,
-            updatedAt: models.Sequelize.literal('CURRENT_TIMESTAMP')
+            updatedAt: model.Sequelize.literal('CURRENT_TIMESTAMP')
           }, {
             where: { id: customer.id }
           }).spread(((affectedCount) => console.log(affectedCount)));

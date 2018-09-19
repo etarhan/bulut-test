@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Basket.associate = function(models) {
     // associations can be defined here
-    Basket.hasMany(models.Product, { foreignKey: 'product_id', as: 'products' });
+    // Basket.hasMany(models.Product, { foreignKey: 'product_id', as: 'products' });
     Basket.belongsTo(models.Command, { foreignKey: 'command_id', as: 'command' });
   };
   return Basket;
