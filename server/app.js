@@ -67,10 +67,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/customers', passport.authenticate('jwt', { session: false }), customerRouter);
-app.use('/commands', commandRouter);
-app.use('/reviews', reviewRouter);
-app.use('/products', productRouter);
-app.use('/categories', categoryRouter);
+app.use('/commands', passport.authenticate('jwt', { session: false }), commandRouter);
+app.use('/reviews', passport.authenticate('jwt', { session: false }), reviewRouter);
+app.use('/products', passport.authenticate('jwt', { session: false }), productRouter);
+app.use('/categories', passport.authenticate('jwt', { session: false }), categoryRouter);
 
 
 module.exports = app;

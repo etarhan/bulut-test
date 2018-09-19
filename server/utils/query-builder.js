@@ -64,8 +64,7 @@ class QueryBuilder {
             } else if (Array.isArray(fc[1])) {
                 this.filterClauses[fc[0]] = { [Op.in]: fc[1] };
             }
-        });
-
+				});
         return this;
     }
 
@@ -75,10 +74,11 @@ class QueryBuilder {
     }
 
     build() {
-        this.whereClauses = { ...this.filterClauses };
+				this.whereClauses = { ...this.filterClauses };
         this.whereClauses = this.search ? { ...this.whereClauses, ...{ $or: this.searchClauses } } : this.whereClauses;
-        this.whereClauses = this.rangeClause && Object.keys(this.rangeClauses).length > 0 ? { ...this.whereClauses, ...this.rangeClauses } : this.whereClauses;
-
+				this.whereClauses = this.rangeClauses && Object.keys(this.rangeClauses).length > 0 ? { ...this.whereClauses, ...this.rangeClauses } : this.whereClauses;
+				
+				
         let query = {};
         if (this.association) {
             query.include = [{

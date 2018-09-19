@@ -25,7 +25,8 @@ router.post('/', function (req, res, next) {
 });
 
 router.put('/:id', async (req, res, next) => {
-  if (Object.keys(req.body).length === 0)
+  try {
+    if (Object.keys(req.body).length === 0)
     return res.sendStatus(400);
 
   const { id } = req.params;
@@ -52,6 +53,9 @@ router.put('/:id', async (req, res, next) => {
     }
   );
   return res.json(updatedItem.get({ plain: true }));
+  } catch (error) {
+    next(error);
+  }
 });
 
 
