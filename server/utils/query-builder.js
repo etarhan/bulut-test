@@ -13,7 +13,6 @@ class QueryBuilder {
 
     setParams(queryObject) {
         this.params = queryObject;
-        
         const { q, ...filterClauses } = this.params.hasOwnProperty('filter') && this.params.filter;
         this.search = q;
         this.filterClauses = filterClauses;
@@ -23,7 +22,6 @@ class QueryBuilder {
 
     setEntity(entity) {
         this.entity = entity;
-
         if (this.params.hasOwnProperty('sort')) {
             const key = Object.keys(entity.associations).find((a) => a === this.params.sort[0]);
             if (key) {

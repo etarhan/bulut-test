@@ -1,7 +1,8 @@
 const QueryBuilder = require('./query-builder')
 
 module.exports = function (entity, association, alias, req, res, exclude) {
-    let query = req.query;
+    let query = {};
+    query = req.hasOwnProperty('query') && req.query;
     Object.entries(query).forEach((entry) => {
         query[entry[0]] = JSON.parse(entry[1]);
     });
